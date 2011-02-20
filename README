@@ -1,0 +1,67 @@
+Formie
+======
+
+Tired of programming each HTML tag? Are you in search of DRYness for Rails
+views? May be Formie can help you.
+
+Formies is a low level template-based rendering engine. It injects
+the formies into the ActionView module. The form-bounded as well as
+the unbounded templates are supported. Still, the ActionView
+functionality (e.g. text_field) is kept untouched.
+
+
+Templates for Formie are hosted in:
+  app/views/formie/forms      (bounded to form)
+  app/views/formie/templates  (free standing)
+
+Inside a formie the following locals (as delivered by the
+controller) are available:
+  action_name
+  controller_name
+  form             (available inside formie_for (similar to fields_for))
+    form.object
+  params
+
+Further locals can be passed over by a hash.
+
+The controller attributes are available as usual.
+
+
+Example
+=======
+
+# Formies free standing
+<%= copyright %>
+<%= back %>
+<%= show :obj => @order %>
+
+<% formie_for :order do |f| %>
+  <%= f.who %>
+  <%= f.amount %>
+<% end %>
+
+Directory app/views/formie/
+
+templates/copyright.html.erb
+  <div class="copyright"> Copyright (c) 2009 </div>
+
+templates/back.html.erb
+  <a href="<%= "/#{h(controller_name)}" %>"> Back </a>
+
+templates/show.html.erb
+  <a href="<%= "/#{h(controller_name)}/#{obj.id}" %>"> Show </a>
+
+forms/who.html.erb
+  <%= form.labelled_field :field => :who %>
+
+forms/amount.html.erb
+  <%= form.labelled_field :field => :amount %>
+
+forms/labelled_field.html.erb
+  <label style="width: 8em; display: block; float: left;">
+    <%= field.to_s.capitalize %>
+  </label>
+  <%= form.text_field field %> <br />
+
+
+Copyright (c) 2009 Dittmar Krall, released under the MIT license
