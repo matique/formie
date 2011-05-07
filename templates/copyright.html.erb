@@ -1,1 +1,5 @@
-<div class="copyright"> Copyright (c) 2009 </div>
+<%
+  year ||= args.first
+  year ||= Time.now.year
+%>
+<div class="copyright"> Copyright (c) <%= year %> </div>
