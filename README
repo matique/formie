@@ -27,11 +27,11 @@ Further locals can be passed over by a hash.
 
 The controller attributes are available as usual.
 
-Warning: a change in a template requires a server restart.
+Formies are reloaded during development and if formie_for is called.
 
 
-Example
-=======
+Examples
+========
 
 # Formies free standing
 <%= copyright %>

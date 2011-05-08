@@ -1,61 +1,57 @@
-module Formie
+require 'load'
 
+module Formie
   module Helpers
 
-    def self.define_formie(where, name, *args)
+    def self.define_formie(where, name, txt)
+#p ["** defining #{where}.#{name}"]
       formiename = name
-      options  = args.extract_options!
-      inline = options.delete(:inline)
 
       where.send(:define_method, formiename, lambda {|*args|
-#p ["** Lambda ** #{where} #{formiename}", args]
+#p ["** called #{where} #{formiename}", args]
 	params = args.extract_options!
 	options = {}
-	options[:inline] = inline
+	options[:inline] = txt
 	options[:locals] = {}
 	options[:locals].update params
 	options[:locals].update :formiename => formiename,
-			:inline => inline, :form => self,
-			:args => args
+			:form => self, :args => args
 	(@template && @template.render(options)) ||
 		controller._render_template(options)
       })
-#p ["** #{where} #{formiename} defined"]
+#p ["** defined  #{where} #{formiename}"]
     end
   end
 
 
   class FormBuilder < ActionView::Helpers::FormBuilder
 
-    def self.define_formie(name, *args)
-#p ["*** define Formie #{name} ", args]
-      Helpers::define_formie(self, name, *args)
+    def self.define_formie(name, txt)
+      Helpers::define_formie(self, name, txt)
     end
+
   end
+end
 
 
+module Formie
   module ActionView
 
-   private
-    # used to ensure that the desired builder gets set before calling #form_for()
-    def form_for_with_builder(record_or_name_or_array, builder,
-		*args, &proc)
+    def formie_for(record_or_name_or_array, *args, &proc)
+      flag = Rails.env == 'production' || Rails.env == 'home'
+      Load::reload_formies  if flag
+
+      # used to ensure that the desired builder gets set before calling #form_for()
       options = args.extract_options!
       # hand control over to the original #form_for()
       form_for(record_or_name_or_array,
-		*(args << options.merge!(:builder => builder)), &proc)
+		*(args << options.merge!(:builder => Formie::FormBuilder)),
+		&proc)
     end
 
-   public
-    def formie_for(record_or_name_or_array, *args, &proc)
-      form_for_with_builder(record_or_name_or_array,
-		Formie::FormBuilder, *args, &proc)
+    def self.define_formie(name, txt)
+      Helpers::define_formie(self, name, txt)
     end
 
-    def self.define_formie(name, *args)
-#p ["** define Formie #{name} ", args]
-      Helpers::define_formie(self, name, *args)
-    end
   end
-
 end
