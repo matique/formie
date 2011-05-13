@@ -39,9 +39,6 @@ module Formie
   module ActionView
 
     def formie_for(record_or_name_or_array, *args, &proc)
-      flag = Rails.env == 'production' || Rails.env == 'home'
-      Load::reload_formies  if flag
-
       # used to ensure that the desired builder gets set before calling #form_for()
       options = args.extract_options!
       # hand control over to the original #form_for()

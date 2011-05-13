@@ -4,11 +4,13 @@ Formie
 Tired of programming each HTML tag? Are you in search of DRYness for Rails
 views? May be Formie can help you.
 
-Formies is a low level template-based rendering engine. It injects
+Formie is a low level template-based rendering engine. It injects
 the formies into the ActionView module. The form-bounded as well as
 the unbounded templates are supported. Still, the ActionView
 functionality (e.g. text_field) is kept untouched.
 
+In short, Formie is like a helper using the notation of a partial and
+being faster than them.
 
 Templates for Formie are hosted in:
   app/views/formie/forms      (bounded to form)
@@ -28,7 +30,10 @@ Locals are passed by a hash.
 
 The controller attributes are available as usual.
 
-Formies are reloaded during development and if formie_for is called.
+To avoid a server restart during development of formies you may add to
+  app/controllers/application_controller.rb
+a
+  Formie::Load.reload  if 'development' == Rails.env
 
 
 Examples

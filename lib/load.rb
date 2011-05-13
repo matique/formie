@@ -1,7 +1,7 @@
 module Formie
   module Load
 
-    def self.reload_formies
+    def self.reload
       now = Time.now
       @last_update ||= Time.new(0)
       self.conditional_load Formie::FormBuilder, 'forms'
