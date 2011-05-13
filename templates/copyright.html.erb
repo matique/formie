@@ -1,5 +1,3 @@
-<%
-  year ||= args.first
-  year ||= Time.now.year
-%>
+<% year ||= args.first || Time.now.year %>
+
 <div class="copyright"> Copyright (c) <%= year %> </div>
