@@ -13,8 +13,8 @@ In short, Formie is like a helper using the notation of a partial and
 being faster than them.
 
 Templates for Formie are hosted in:
-  app/views/formie/forms      (bounded to form)
-  app/views/formie/templates  (free standing)
+  app/views/formies/forms      (bounded to form)
+  app/views/formies/templates  (free standing)
 
 Inside a formie the following locals (as delivered by the
 controller) are available:
@@ -39,7 +39,6 @@ a
 Examples
 ========
 
-# Formies free standing
 <%= copyright %>
 <%= back %>
 <%= show :obj => @order %>
@@ -49,7 +48,7 @@ Examples
   <%= f.amount %>
 <% end %>
 
-Directory app/views/formie/
+Directory app/views/formies/
 
 templates/copyright.html.erb
   <div class="copyright"> Copyright (c) 2009 </div>
