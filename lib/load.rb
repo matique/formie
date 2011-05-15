@@ -16,7 +16,8 @@ module Formie
     end
 
     def self.conditional_load(where, dir)
-      dirfull = "#{::Rails.root.to_s}/app/views/formie/#{dir}"
+      dirfull = "#{::Rails.root.to_s}/app/views/formies/#{dir}"
+      raise "Missing Formie directory '#{dirfull}'"  unless File.exists?(dirfull)
       mtime = File.new(dirfull).mtime
       return  if mtime < @last_update
 
