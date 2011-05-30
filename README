@@ -48,7 +48,7 @@ Examples
 <%= back %>
 <%= show :obj => @order %>
 
-<% formie_for :order do |f| %>
+<% form_for :order do |f| %>
   <%= f.who %>
   <%= f.amount %>
 <% end %>

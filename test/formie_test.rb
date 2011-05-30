@@ -27,15 +27,15 @@ class FormieTest < ActionView::TestCase
   test "l_field" do
 ## not working; test environment
 #    row = Order.new
-#    formie_for row do |f|
+#    form_for row do |f|
 #      res = f.l_field :field => :name
 #    end
   end
 
-  test "formie_for" do
+  test "form_for" do
 ## not working; test environment
 #    row = Order.new
-#    formie_for row do |f|
+#    form_for row do |f|
 #      res = f.l_field :field => :name
 #    end
   end
