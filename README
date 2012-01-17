@@ -9,15 +9,16 @@ the formies into the ActionView module. The form-bounded as well as
 the unbounded templates are supported. Still, the ActionView
 functionality (e.g. text_field) is kept untouched.
 
-In short, Formie is like a helper using the notation of a partial and
-being faster than them.
+In short, Formie is like a helper using the notation of a partial.
 
 Templates for Formie are hosted in:
+
   app/formies/forms       (bounded to form)
   app/formies/application (free standing)
 
 Inside a formie the following locals (as delivered by the
 controller) are available:
+
   action_name
   args          remainings after extracting options/locals
   block         block passed to the formie
@@ -31,27 +32,25 @@ Locals are passed by a hash.
 The controller attributes are available as usual.
 
 To avoid a server restart during development of formies you may add to
-  app/controllers/application_controller.rb
 
-  before_filter :reload_formies
+    # app/controllers/application_controller.rb
 
- private
-  def reload_formies
-    Formie::Load.reload  if 'development' == Rails.env
-  end
+    before_filter do
+      Formie.reload  if 'development' == Rails.env
+    end
 
 
 Examples
 ========
 
-<%= copyright %>
-<%= back %>
-<%= show :obj => @order %>
+    <%= copyright %>
+    <%= back %>
+    <%= show :obj => @order %>
 
-<%= form_for :order do |f| %>
-  <%= f.who %>
-  <%= f.amount %>
-<% end %>
+    <%= form_for :order do |f| %>
+      <%= f.who %>
+      <%= f.amount %>
+    <% end %>
 
 Directory app/formies/
 
@@ -77,4 +76,4 @@ forms/labelled_field.html.erb
   <%= form.text_field field %> <br />
 
 
-Copyright (c) 2009 Dittmar Krall, released under the MIT license
+Copyright (c) 2009..2012 Dittmar Krall, released under the MIT license

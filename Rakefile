@@ -1,23 +1,30 @@
-require 'rake'
-require 'rake/testtask'
-require 'rake/rdoctask'
+# encoding: UTF-8
 
-desc 'Default: run unit tests.'
-task :default => :test
-
-desc 'Test the Formie plugin.'
-Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+begin
+  require 'bundler'
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
-desc 'Generate documentation for the Formie plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Formie'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+require 'rspec/core'
+require 'rspec/core/rake_task'
+
+Bundler::GemHelper.install_tasks
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+
+
+desc "Clean automatically generated files"
+task :clean do
+  FileUtils.rm_rf "pkg"
+end
+
+desc "Check syntax"
+task :syntax do
+  Dir["**/*.rb"].each do |file|
+    print "#{file}: "
+    system("ruby -c #{file}")
+  end
 end
