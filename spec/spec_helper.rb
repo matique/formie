@@ -44,6 +44,7 @@ end
 Spork.each_run do
   # This code will be run each time you run your specs.
   Dir["#{File.dirname(__FILE__)}/../lib/controllers/*.rb"].each { |f| load f }
+  Formie.reload
 
   unless ENV['COVERAGE'].nil?
     require 'simplecov'

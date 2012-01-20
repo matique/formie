@@ -7,6 +7,7 @@ module Formie
     @last_update ||= Time.new(0)
     self.load_formies(::ActionView::Helpers::FormBuilder, 'app/formies/forms')
     self.load_formies(::ActionView::Helpers::TextHelper,  'app/formies/application')
+    self.load_formies(::ActionView::Helpers::TextHelper,  'app/formies/templates')
     @last_update = now
   end
 
@@ -32,7 +33,7 @@ module Formie
  private
   def self.load_formies(where, dir)
     dir = "#{::Rails.root.to_s}/#{dir}"
-    raise "Missing Formie directory '#{dir}'"  unless File.exists?(dir)
+    return  unless File.exists?(dir)
     Dir.chdir(dir) {|current_dir|
       Dir.glob('**/*.html.erb').each {|path|
 	next  if File.new(path).mtime < @last_update
