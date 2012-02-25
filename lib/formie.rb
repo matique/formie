@@ -23,8 +23,9 @@ module Formie
       options[:locals].update params
       options[:locals].update :formiename => formiename,
 		:block => block, :form => self, :args => args
-      (@template && @template.render(options)) ||
-	controller.render_to_body(options)
+      defined?(controller) == 'method' ?
+	controller.render_to_body(options) :
+	@template.render(options)
     })
 #p "** defined  #{where} #{formiename}"
   end
