@@ -34,6 +34,7 @@ Spork.prefork do
     # methods or matchers
     require 'rspec/expectations'
     config.include RSpec::Matchers
+    config.include Capybara::DSL
 
     # == Mock Framework
     config.mock_with :rspec

@@ -15,7 +15,7 @@ describe "Formie" do
     order = Order.all.first
 
     visit "/orders/#{order.id}"
-    page.find('form p input').value.should == order.name
+    page.find('form p input#order_name').value.should == order.name
   end
 
   it 'builtins' do
