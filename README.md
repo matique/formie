@@ -10,6 +10,9 @@ The form-bounded as well as the unbounded templates are supported.
 Still, the ActionView functionality (e.g. text_field) is kept untouched.
 In short, Formie is like a helper using the notation of a partial.
 
+Templates handlers are supported as in partials.
+
+
 ## Installation
 
 As usual:
@@ -29,6 +32,7 @@ Templates for Formie are hosted in:
 
 - app/formies/forms       (bounded to form)
 - app/formies/application (free standing)
+- app/formies/templates   (free standing)
 
 Inside a formie the following locals (as delivered by the
 controller) are available:
@@ -81,4 +85,4 @@ In directory app/formies :
       <%= form.text_field args.first %>
     </p>
 
-Copyright (c) 2009..2012 Dittmar Krall, released under the MIT license
+Copyright (c) 2009..2013 Dittmar Krall, released under the MIT license
