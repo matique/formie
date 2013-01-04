@@ -11,14 +11,14 @@ module Formie
     @last_update = now
   end
 
-  def self.define_formie(where, name, txt)
+  def self.define_formie(where, name, path)
     formiename = name
 
     where.send(:define_method, formiename, lambda {|*args, &block|
 #p "** called #{where} #{formiename}", args, block
       params = args.extract_options!
       options = {}
-      options[:inline] = txt
+      options[:file] = path
       options[:locals] = {}
       options[:locals].update params
       options[:locals].update :formiename => formiename,
@@ -36,19 +36,18 @@ module Formie
     dir = "#{::Rails.root.to_s}/#{dir}"
     return  unless File.exists?(dir)
     Dir.chdir(dir) {|current_dir|
-      Dir.glob('**/*.html.erb').each {|path|
+      hsh = {}
+      Dir.glob('**/**').sort.each { |path|
+	base = File.basename(path).split('.').first
+	hsh[base] = path  unless hsh[base]
+      }
+      hsh.each { |name, path|
 	next  if File.new(path).mtime < @last_update
 
-	name = File.basename(path, '.html.erb')
-	self.inject(where, name, File.open(path).read)
+	x = File.expand_path(File.dirname(path))
+	where.define_formie name, File.join(x, name)
       }
     }
-  end
-
-  def self.inject(where, name, txt)
-#puts "** loading formie '#{where}' - '#{name}'"
-    txt = txt.force_encoding('UTF-8')  if txt.respond_to?(:force_encoding)
-    where.define_formie name, txt
   end
 
 end

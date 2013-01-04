@@ -12,4 +12,5 @@ group :development, :test do
   gem "sqlite3"
   gem 'watchr'
   gem 'spork'
+  gem 'slim'
 end

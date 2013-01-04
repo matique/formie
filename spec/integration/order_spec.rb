@@ -16,6 +16,7 @@ describe "Formie" do
 
     visit "/orders/#{order.id}"
     page.find('form p input#order_name').value.should == order.name
+    page.find('form span').text.should == 'Hello Slim'
   end
 
   it 'builtins' do
