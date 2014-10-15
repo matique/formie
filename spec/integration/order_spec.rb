@@ -8,26 +8,26 @@ describe "Formie" do
 
   it 'should display copyright' do
     visit "/orders"
-    page.should have_content("Copyright")
+    expect(page).to have_content("Copyright")
   end
 
   it 'should list one order' do
     order = Order.all.first
 
     visit "/orders/#{order.id}"
-    page.find('form p input#order_name').value.should == order.name
-    page.find('form span').text.should == 'Hello Slim'
+    expect(page.find('form p input#order_name').value).to eq(order.name)
+    expect(page.find('form span').text).to eq('Hello Slim')
   end
 
   it 'builtins' do
     visit "/orders/new"
-    page.should have_content("action_name new")
-    page.should have_content("args [123, 456]")
-    page.should have_content("block 4")
-    page.should have_content("controller_name orders")
-    page.should have_content("form ActionView::Helpers::FormBuilder")
-    page.should have_content("form.object Order")
-    page.should have_content("params new")
+    expect(page).to have_content("action_name new")
+    expect(page).to have_content("args [123, 456]")
+    expect(page).to have_content("block 4")
+    expect(page).to have_content("controller_name orders")
+    expect(page).to have_content("form ActionView::Helpers::FormBuilder")
+    expect(page).to have_content("form.object Order")
+    expect(page).to have_content("params new")
   end
 
 end
