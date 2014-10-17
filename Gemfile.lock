@@ -93,8 +93,8 @@ GEM
       sprockets-rails (~> 3.0.0.beta1)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.3)
-      activesupport
+    rails-dom-testing (1.0.4)
+      activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.1)
