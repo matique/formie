@@ -1,56 +1,52 @@
+HH = '#' * 22  unless defined?(HH)
+H = '#' * 5    unless defined?(H)
+
+def usage
+  puts <<-EOS
+  Ctrl-\\ or ctrl-4   Running all tests
+  Ctrl-C             Exit
+  EOS
+end
+
 def run(cmd)
-  puts "***** #{cmd}"
-  system "/usr/bin/time --format 'Elapsed time %E' #{cmd}"
+  puts "#{HH} #{Time.now} #{HH}"
+  puts "#{H} #{cmd}"
+  system "/usr/bin/time --format '#{HH} Elapsed time %E' #{cmd}"
 end
 
-def run_without(list)
-  all = Dir.glob("spec/**/*_spec.rb")
-  res = []
-  list.each { |str|
-    files = Dir.glob("spec/**/#{str}/*_spec.rb")
-    res << files
-  }
-  run "rspec #{(all - res.flatten).sort.uniq.join(' ')}"
-end
-
-def run_matching(name)
-  arr = name.gsub('_', '/').split('/')
-  bool = false
-  arr.each { |str|
-    files = Dir.glob("spec/**/#{str}_spec.rb")
-    files.each { |file|
-      bool = true
-      run "rspec #{file}"
-    }
-  }
-  puts "***** Changed #{name}; not yet done"  unless bool
-end
-
-
-watch('spec/.*/*_spec\.rb')     { |match| run "rspec #{match[0]}" }
-watch('spec/.*/.*/*_spec\.rb')  { |match| run "rspec #{match[0]}" }
-
-watch('app/(.*)?\.rb') { |match|
-  puts "** touched #{match[1]}"
-  file = "spec/#{match[1]}_spec.rb"
-  if File.exists?(file)
-    run "rspec #{file}"
-  else
-    run_matching match[1]
+def run_it(type, file)
+  case type
+  when 'test';  run %Q{ruby -I"lib:test" -rubygems #{file}}
+  when 'spec';  run %Q{rspec -X #{file}}
+  else;         puts "#{H} unknown type: #{type}, file: #{file}"
   end
-}
+end
 
-watch('app/views/(.*)?\.erb') { |match|
-  puts "** touched #{match[1]}"
-  run_without ['models']
-}
+def run_all_tests
+  puts "\n#{HH} Running all tests #{HH}\n"
+  %w{test spec}.each { |dir| run "rake #{dir} RAILS_ENV=test"  if  File.exists?(dir) }
+end
 
+def run_matching_files(base)
+  base = base.split('_').first
+  %w{test spec}.each { |type|
+    files = Dir["#{type}/**/*.rb"].select { |file| file =~ /#{base}_.*\.rb/ }
+    run_it type, files.join(' ')  unless files.empty?
+  }
+end
+
+%w{test spec}.each { |type|
+  watch("#{type}/#{type}_helper\.rb") { run_all_tests }
+  watch("#{type}/.*/*_#{type}\.rb")   { |match| run_it type, match[0] }
+}
+%w{rb erb haml slim}.each { |type|
+  watch("app/.*/.*\.#{type}") { |m|
+    run_matching_files("#{m[0].split('/').at(2).split('.').first}")
+  }
+}
 
 # Ctrl-\ or ctrl-4
-Signal.trap('QUIT') do
-  puts "\n--- Running all tests ---\n"
-  run 'rake spec'
-end
-
+    Signal.trap('QUIT') { run_all_tests }
 # Ctrl-C
-Signal.trap('INT') { abort("Interrupted\n") }
+    Signal.trap('INT')  { abort("Interrupted\n") }
+usage

@@ -1,12 +1,10 @@
-lib = File.expand_path('../lib/', __FILE__)
-$:.unshift lib unless $:.include?(lib)
+$:.push File.expand_path("../lib", __FILE__)
 
 require 'formie/version'
 
 Gem::Specification.new do |s|
   s.name        = "formie"
   s.version     = Formie::VERSION
-  s.platform    = Gem::Platform::RUBY
   s.summary     = "Formie is like a helper, but uses the notation of a partial."
   s.description = <<-'END'
     Formie implements low level template-based helpers. It injects
@@ -18,13 +16,14 @@ Gem::Specification.new do |s|
   s.email       = ['dittmar.krall@matique.de']
   s.homepage    = 'http://matique.de'
 
-  files  = Dir["{app,lib,config}/**/*.rb"]
-  files += %w{Gemfile MIT-LICENSE README.md formie.gemspec}
-  s.files       = files
-  s.require_paths = ["lib"]
+  s.license     = "MIT"
 
-  s.add_dependency "rails"
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec-rails"
-  s.add_development_dependency "capybara"
+  s.files = Dir["{config,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.test_files = Dir["test/**/*"]
+
+  s.add_dependency "rails", "~> 4.2.0.beta2"
+
+#  s.add_development_dependency "sqlite3"
+#  s.add_development_dependency 'minitest'
+#  s.add_development_dependency 'capybara'
 end
