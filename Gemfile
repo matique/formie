@@ -6,6 +6,7 @@ gem 'byebug', group: [:development, :test]
 
 version = ENV["RAILS_VERSION"]
 gem 'rails', version ? "~> #{version}" : '= 4.2.0.beta2'
+#gem 'rails', version ? "~> #{version}" : '~> 4.1'
 gem 'jquery-rails'
 
 group :test do

@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     formie (0.8.0)
-      rails (~> 4.2.0.beta2)
+      rails (~> 4.1)
 
 GEM
   remote: https://rubygems.org/
