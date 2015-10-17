@@ -17,12 +17,12 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://matique.de'
 
   s.license     = "MIT"
+  s.platform    = Gem::Platform::RUBY
 
   s.files = Dir["{config,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-#  s.add_dependency "rails", "~> 4.2.0.beta2"
-  s.add_dependency "rails", "~> 4.1"
+  s.add_dependency "rails", "~> 4.2"
 
 #  s.add_development_dependency "sqlite3"
 #  s.add_development_dependency 'minitest'
