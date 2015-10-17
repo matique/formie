@@ -4,13 +4,13 @@ before_install: rm -f Gemfile.lock
 sudo: false
 
 rvm:
-  - 1.9.3
+#  - 1.9.3
   - 2.2.0
-#  - 2.2.3
+  - 2.2.3
 
 env:
-  - "RAILS_VERSION=3.2.16"
-#  - "RAILS_VERSION=4.2.0"
+#  - "RAILS_VERSION=3.2.16"
+  - "RAILS_VERSION=4.2.0"
   - "RAILS_VERSION=4.2.4"
 
 matrix:

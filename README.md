@@ -26,6 +26,8 @@ or:
 
     $ bundle
 
+Use 'gem install formie -v 0.7.1' for Rails 3.2.
+
 ## Description
 
 Templates for Formie are hosted in:
@@ -80,9 +82,10 @@ In directory app/formies :
     <a href="<%= "/#{h(controller_name)}/#{obj.id}" %>"> Show </a>
 
     # forms/l_text_field.html.erb
+    <% field = args.first %>
     <p>
-      <%= form.label args.first %><br />
-      <%= form.text_field args.first %>
+      <%= form.label field %><br />
+      <%= form.text_field field %>
     </p>
 
-Copyright (c) 2009..2013 Dittmar Krall, released under the MIT license
+Copyright (c) 2009..2015 Dittmar Krall, released under the MIT license.
