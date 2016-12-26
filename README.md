@@ -52,7 +52,6 @@ controller) are available:
 |  form.object
 | params
 
-
 Locals are passed in a hash.
 The controller attributes are available as usual.
 
