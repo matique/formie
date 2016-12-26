@@ -42,11 +42,15 @@ Templates for Formie are hosted in:
 Inside a formie the following locals (as delivered by the
 controller) are available:
 
+Markdown | Less | Pretty
 --- | --- | ---
 action_name
-args |         remainings after extracting options/locals
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+args | remainings after extracting options/locals
+block | block passed to the formie
+controller_name
+form | (available inside form_for (similar to fields_for))
+  form.object
+params
 
 
 
