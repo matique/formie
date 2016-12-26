@@ -44,13 +44,13 @@ controller) are available:
 
 Markdown | Less | Pretty
 --- | --- | ---
-action_name
-args | remainings after extracting options/locals
-block | block passed to the formie
-controller_name
-form | (available inside form_for (similar to fields_for))
-  form.object
-params
+| action_name
+| args | remainings after extracting options/locals
+| block | block passed to the formie
+| controller_name
+| form | (available inside form_for (similar to fields_for))
+|  form.object
+| params
 
 
 
