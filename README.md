@@ -53,19 +53,6 @@ controller) are available:
 | params
 
 
-
-
-
-
-
-- action_name
-- args          remainings after extracting options/locals
-- block         block passed to the formie
-- controller_name
-- form          (available inside form_for (similar to fields_for))
--   form.object
-- params
-
 Locals are passed in a hash.
 The controller attributes are available as usual.
 
