@@ -1,9 +1,15 @@
-.bundle/
-log/*.log
 formie*.gem
-pkg/
-test/dummy/db/*.sqlite3
-test/dummy/db/*.sqlite3-journal
-test/dummy/log/*.log
-test/dummy/tmp/
-test/dummy/.sass-cache
+
+/.bundle
+/coverage
+/pkg
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/spec/internal/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/spec/internal/log
+/log/*.log
+/tmp

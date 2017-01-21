@@ -34,7 +34,7 @@ module Formie
  private
   def self.load_formies(where, dir)
     dir = "#{::Rails.root.to_s}/#{dir}"
-    return  unless File.exists?(dir)
+    return  unless File.exist?(dir)
     Dir.chdir(dir) {|current_dir|
       hsh = {}
       Dir.glob('**/**').sort.each { |path|

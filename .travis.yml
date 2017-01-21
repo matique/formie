@@ -1,14 +1,16 @@
 language: ruby
 bundler_args: --without production
-before_install: rm -f Gemfile.lock
+# before_install: rm -f Gemfile.lock
 sudo: false
 
-matrix:
-  include:
-    - rvm: 2.2.0
-      env: "RAILS_VERSION=4.2.0"
-    - rvm: 2.2.3
-      env: "RAILS_VERSION=4.2.4"
+rvm:
+#  - 2.2.0
+  - 2.3.1
+#  - 2.4.0
+
+gemfile:
+  - Gemfile
+  - gemfiles/rails4_2.gemfile
 
 notifications:
   email: false
