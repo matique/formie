@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without production
+#bundler_args: --without production
 # before_install: rm -f Gemfile.lock
 sudo: false
 
