@@ -1,8 +1,9 @@
-formie*.gem
-
-/.bundle
-/coverage
-/pkg
+*.gem
+.bundle
+Gemfile.lock
+gemfiles/*.lock
+coverage/*
+pkg/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -11,5 +12,5 @@ formie*.gem
 
 # Ignore all logfiles and tempfiles.
 /spec/internal/log
-/log/*.log
-/tmp
+log
+tmp
