@@ -33,20 +33,19 @@ module Formie
 
  private
   def self.load_formies(where, dir)
-    dir = "#{::Rails.root.to_s}/#{dir}"
+ # avoid Dir.chdir (not thread safe)
+    dir = File.join Rails.root, dir
     return  unless File.exist?(dir)
-    Dir.chdir(dir) {|current_dir|
-      hsh = {}
-      Dir.glob('**/**').sort.each { |path|
-	base = File.basename(path).split('.').first
-	hsh[base] = path  unless hsh[base]
-      }
-      hsh.each { |name, path|
-	next  if File.new(path).mtime < @last_update
+    hsh = {}
+    Dir.glob(File.join(dir,'**','**')).sort.each { |path|
+      base = File.basename(path).split('.').first
+      hsh[base] = path  unless hsh[base]
+    }
+    hsh.each { |name, path|
+      next  if File.new(path).mtime < @last_update
 
-	x = File.expand_path(File.dirname(path))
-	where.define_formie name, File.join(x, name)
-      }
+      x = File.expand_path(File.dirname(path))
+      where.define_formie name, File.join(x, name)
     }
   end
 
