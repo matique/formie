@@ -68,7 +68,7 @@ To avoid a server restart during development of formies you may add to:
 
     <%= copyright %>
     <%= back %>
-    <%= show :obj => @order %>
+    <%= show obj: @order %>
 
     <%= form_for @order do |f| %>
       <%= f.l_text_field :who %>
