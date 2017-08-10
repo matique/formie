@@ -6,14 +6,8 @@ end
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
-require 'bundler'
-Bundler.require :default, :development
-
 require 'combustion'
-#Combustion.initialize! :active_record, :action_view
-#Combustion.initialize! :active_record, :action_view, :action_controller
-#Combustion.initialize! :active_record, :action_controller
-Combustion.initialize! :all
+Combustion.initialize! :active_record, :action_controller
 
 require "rails/test_help"
 require 'minitest/autorun'

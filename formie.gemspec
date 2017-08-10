@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'slim'
 
   s.add_development_dependency 'capybara'
-  s.add_development_dependency 'combustion', '~> 0.7.0'
+  s.add_development_dependency 'combustion'
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
