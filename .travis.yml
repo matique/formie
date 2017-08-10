@@ -1,8 +1,9 @@
 language: ruby
+sudo: false
+
 bundler_args: --without production
 before_install: gem update bundler --no-document
 script: 'bundle exec rake test'
-sudo: false
 
 cache: bundler
 
