@@ -1,6 +1,6 @@
 require "bundler/gem_tasks"
 
-load 'rails/tasks/statistics.rake'
+#load 'rails/tasks/statistics.rake'
 
 Bundler::GemHelper.install_tasks
 
