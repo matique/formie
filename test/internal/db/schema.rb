@@ -1,4 +1,4 @@
-ActiveRecord::Schema.define do
+ActiveRecord::Schema.define(version: 20141016161801) do
 
   create_table "orders", force: true do |t|
     t.string   "name"

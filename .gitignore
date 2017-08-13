@@ -1,17 +1,12 @@
+.bundle/
+coverage/
+pkg/
+test/internal/db/*.sqlite3
+
 *.gem
-.bundle
-Gemfile.lock
-gemfiles/*.lock
-coverage/*
-pkg/*
-
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/spec/internal/db/*.sqlite3
-/test/dummy/db/*.sqlite3
-
-# Ignore all logfiles and tempfiles.
-/spec/internal/log
-log
-tmp
+*.log
+*.lock
+**/*.gem
+**/*.log
+**/*.lock
+test/internal/tmp/
