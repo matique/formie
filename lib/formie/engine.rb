@@ -1,5 +1,5 @@
 module Formie
   class Engine < Rails::Engine
-require 'slim'
+    require 'slim'
   end
 end

@@ -7,12 +7,12 @@ script: 'bundle exec rake test'
 
 rvm:
   - 2.4.1
-#  - 2.4.0
+  - 2.4.0
 #  - 2.3.3  # tested; reduce work for CI
 #  - 2.2.6  # tested; reduce work for CI
 
 gemfile:
-#  - gemfiles/rails5_0.gemfile
+  - gemfiles/rails5_0.gemfile
   - gemfiles/rails5_1.gemfile
 
 matrix:
