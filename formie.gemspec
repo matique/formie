@@ -22,13 +22,10 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
 
-#  s.add_dependency 'slim', '~> 3'
-
   s.add_development_dependency 'bundler', '~> 1'
   s.add_development_dependency 'capybara', '~> 2'
   s.add_development_dependency 'combustion', '~> 0'
   s.add_development_dependency 'minitest', '~> 5'
   s.add_development_dependency 'rake', '~> 12'
-#  s.add_development_dependency 'slim', '~> 3'
   s.add_development_dependency 'sqlite3', '~> 1'
 end
