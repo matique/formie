@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'combustion', '~> 0'
   s.add_development_dependency 'minitest', '~> 5'
   s.add_development_dependency 'rake', '~> 12'
-  s.add_development_dependency 'slim', '~> 3'
+#  s.add_development_dependency 'slim', '~> 3'
+  s.add_development_dependency 'slim-rais', '~> 3'
   s.add_development_dependency 'sqlite3', '~> 1'
 end
