@@ -22,7 +22,7 @@ matrix:
 #  include:
 #    - rvm: 2.2.6
 #      gemfile: gemfiles/rails4_2.gemfile
+  fast_finish: true
 
 notifications:
   email: false
-fast_finish: true
