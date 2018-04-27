@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 gemspec
 
-gem 'rails', '5.1.6'
-gem 'dryer-config', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
+gem 'dryer-config', '~> 5.2.0'
 
 group :test do
   gem 'observr'
