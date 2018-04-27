@@ -157,11 +157,11 @@ DEPENDENCIES
   bundler (~> 1)
   capybara
   combustion (~> 0)
-  dryer-config (~> 5.2.0)
+  dryer-config
   formie!
   minitest
   observr
-  rails (~> 5.2.0)
+  rails
   rake (~> 12)
   simplecov
   slim
