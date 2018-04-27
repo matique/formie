@@ -3,7 +3,6 @@ gemspec
 
 gem 'rails', '~> 5.2.0'
 gem 'dryer-config', '~> 5.2.0'
-gem 'activestorage'
 
 group :test do
   gem 'observr'

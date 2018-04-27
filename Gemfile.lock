@@ -153,7 +153,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activestorage
   appraisal (~> 2)
   bundler (~> 1)
   capybara
