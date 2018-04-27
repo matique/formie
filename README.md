@@ -60,7 +60,7 @@ To avoid a server restart during development of formies you may add to:
     # app/controllers/application_controller.rb
 
     before_filter do
-      Formie.reload  if 'development' == Rails.env
+      Formie.reload  if Rails.env.development?
     end
 
 
@@ -93,4 +93,4 @@ In directory app/formies :
       <%= form.text_field field %>
     </p>
 
-Copyright (c) 2009..2017 Dittmar Krall, released under the MIT license.
+Copyright (c) 2009..2018 Dittmar Krall, released under the MIT license.
