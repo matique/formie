@@ -5,5 +5,5 @@ coverage/
 
 *.gem
 *.log
-#*.lock
+*.lock
 test/internal/tmp/
