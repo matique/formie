@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formie (0.9.13)
+    formie (0.9.14)
 
 GEM
   remote: https://rubygems.org/
@@ -155,7 +155,7 @@ PLATFORMS
 
 DEPENDENCIES
   appraisal (~> 2)
-  bundler (~> 2)
+  bundler
   capybara
   combustion (~> 0)
   formie!
