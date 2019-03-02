@@ -2,12 +2,13 @@ language: ruby
 sudo: false
 
 bundler_args: --without production
-before_install: gem update bundler --no-document
+#before_install: gem update bundler --no-document
 script: 'bundle exec rake test'
 
 rvm:
-  - 2.5.1
-  - 2.5.0
+  - 2.6.1
+#  - 2.5.1
+#  - 2.5.0
 #  - 2.4.1  # tested
 #  - 2.4.0  # tested
 #  - 2.3.3  # tested
