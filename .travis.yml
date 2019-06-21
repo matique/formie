@@ -6,7 +6,8 @@ bundler_args: --without production
 script: 'bundle exec rake test'
 
 rvm:
-  - 2.6.1
+  - 2.6.3
+#  - 2.6.1
 #  - 2.5.1
 #  - 2.5.0
 #  - 2.4.1  # tested
