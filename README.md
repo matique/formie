@@ -93,4 +93,4 @@ In directory app/formies :
       <%= form.text_field field %>
     </p>
 
-Copyright (c) 2009..2018 Dittmar Krall, released under the MIT license.
+Copyright (c) 2009-2019 Dittmar Krall, released under the MIT license.
