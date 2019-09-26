@@ -4,8 +4,9 @@ Formie
 [![Gem Version](https://badge.fury.io/rb/formie.svg)](https://badge.fury.io/rb/formie)
 [![Build Status](https://travis-ci.org/matique/formie.png?branch=master)](https://travis-ci.org/matique/formie)
 
-Tired of programming each HTML tag? Are you in search of DRYness for Rails
-views? May be Formie can help you.
+Tired of programming each HTML tag?
+Are you in search of DRYness for Rails views?
+May be Formie can help you.
 
 Formie implements low level template-based helpers.
 It injects the formies into the ActionView module.
@@ -35,9 +36,12 @@ Use 'gem install formie -v 0.7.1' for Rails 3.2.
 
 Templates for Formie are hosted in:
 
-- app/formies/forms       (bounded to form)
-- app/formies/application (free standing)
-- app/formies/templates   (free standing)
+- <formie_path>/forms       (bounded to form)
+- <formie_path>/application (free standing)
+- <formie_path>/templates   (free standing)
+
+Till Rails 5 <formie_path> is 'app/formies'.
+Starting at Rails 6 <formie_path> is 'app/views/formies'.
 
 Inside a formie the following locals (as delivered by the
 controller) are available:
@@ -75,7 +79,7 @@ To avoid a server restart during development of formies you may add to:
       <%= f.l_text_field :amount %>
     <% end %>
 
-In directory app/formies :
+In directory <formie_path> :
 
     # application/copyright.html.erb
     <div class="copyright"> Copyright (c) 2009 </div>
@@ -92,5 +96,9 @@ In directory app/formies :
       <%= form.label field %><br />
       <%= form.text_field field %>
     </p>
+
+    # templates/hello.slim
+    span Hello Slim
+    # a comment
 
 Copyright (c) 2009-2019 Dittmar Krall, released under the MIT license.

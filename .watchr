@@ -16,9 +16,9 @@ end
 
 def run_it(type, file)
   case type
-#  when 'test';  run %Q{ruby -I"lib:test" -rubygems #{file}}
-  when 'test';  run %Q{rails test #{file}}
-  when 'spec';  run %Q{rspec -X #{file}}
+  when 'test';  run %Q{ruby -I"lib:test" -r rubygems #{file}}
+#  when 'test';  run %Q{rails test #{file}}
+#  when 'spec';  run %Q{rspec -X #{file}}
   else;         puts "#{H} unknown type: #{type}, file: #{file}"
   end
 end

@@ -1,23 +1,6 @@
 require 'bundler/setup'
 Bundler::GemHelper.install_tasks
 
-
-=begin
-## in particular, make db task available, but in vane
-# https://github.com/pat/combustion/issues/13
-require "rails"
-require "combustion"
-require "active_record/railtie"
-#Bundler.require :default, Rails.env
-
-
-Bundler.require
-#require "combustion"
-#Combustion.initialize!
-Combustion::Application.load_tasks
-=end
-
-
 require 'rake/testtask'
 
 Rake::TestTask.new(:test) do |t|

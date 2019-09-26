@@ -23,6 +23,13 @@ describe "Formie" do
     assert_equal 'Hello Slim', page.find('form span').text
   end
 
+  it 'should remove comments in Slim' do
+    order = Order.all.first
+
+    visit "/orders/#{order.id}"
+    refute page.has_content?("a comment")
+  end
+
   it 'builtins' do
     visit "/orders/new"
     assert page.has_content?("action_name new")

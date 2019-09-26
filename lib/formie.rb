@@ -2,12 +2,19 @@ require 'formie/engine.rb'
 
 module Formie
 
+  Rails6 = Rails.version.to_f >= 6.0
+  PATH  = Rails6 ? 'app/views/formies' : 'app/formies'
+
   def self.reload
+    if Rails6 && !File.directory?("#{Rails.root}/app/views/formies")
+      raise 'Formies must be located in "app/views/formies" since Rails 6'
+    end
+
     now = Time.now
     @last_update ||= Time.new(0)
-    self.load_formies(::ActionView::Helpers::FormBuilder, 'app/formies/forms')
-    self.load_formies(::ActionView::Helpers::TextHelper,  'app/formies/application')
-    self.load_formies(::ActionView::Helpers::TextHelper,  'app/formies/templates')
+    self.load_formies(::ActionView::Helpers::FormBuilder, "#{PATH}/forms")
+    self.load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/application")
+    self.load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/templates")
     @last_update = now
   end
 
@@ -18,7 +25,11 @@ module Formie
 #p "** called #{where} #{formiename}", args, block
       params = args.extract_options!
       options = {}
-      options[:file] = path
+      unless Rails6
+        options[:file] = path
+      else
+        options[:template] = path.sub("#{Rails.root}/app/views", "")
+      end
       options[:locals] = {}
       options[:locals].update params
       options[:locals].update :formiename => formiename,
