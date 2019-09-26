@@ -23,7 +23,7 @@ describe "Formie" do
     assert_equal 'Hello Slim', page.find('form span').text
   end
 
-  it 'should remove comments in Slim' do
+  it 'should remove comments in Slim testing full stack' do
     order = Order.all.first
 
     visit "/orders/#{order.id}"
