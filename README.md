@@ -98,7 +98,8 @@ In directory <formie_path> :
     </p>
 
     # templates/hello.slim
+    / a comment
+
     span Hello Slim
-    # a comment
 
 Copyright (c) 2009-2019 Dittmar Krall, released under the MIT license.
