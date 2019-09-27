@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    formie (0.9.16)
+    formie (1.0.0)
 
 GEM
   remote: https://rubygems.org/
