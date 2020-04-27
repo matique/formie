@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'formie/engine.rb'
 
 module Formie
-
   Rails6 = Rails.version.to_f >= 6.0
-  PATH  = Rails6 ? 'app/views/formies' : 'app/formies'
+  PATH = Rails6 ? 'app/views/formies' : 'app/formies'
 
   def self.reload
     if Rails6 && !File.directory?("#{Rails.root}/app/views/formies")
@@ -12,56 +13,55 @@ module Formie
 
     now = Time.now
     @last_update ||= Time.new(0)
-    self.load_formies(::ActionView::Helpers::FormBuilder, "#{PATH}/forms")
-    self.load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/application")
-    self.load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/templates")
+    load_formies(::ActionView::Helpers::FormBuilder, "#{PATH}/forms")
+    load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/application")
+    load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/templates")
     @last_update = now
   end
 
   def self.define_formie(where, name, path)
     formiename = name
 
-    where.send(:define_method, formiename, lambda {|*args, &block|
-#p "** called #{where} #{formiename}", args, block
+    where.send(:define_method, formiename, lambda { |*args, &block|
+      # p "** called #{where} #{formiename}", args, block
       params = args.extract_options!
       options = {}
-      unless Rails6
-        options[:file] = path
+      if Rails6
+        options[:template] = path.sub("#{Rails.root}/app/views", '')
       else
-        options[:template] = path.sub("#{Rails.root}/app/views", "")
+        options[:file] = path
       end
       options[:locals] = {}
       options[:locals].update params
-      options[:locals].update :formiename => formiename,
-		:block => block, :form => self, :args => args
-      defined?(controller) == 'method' ?
-	controller.render_to_body(options) :
-	@template.render(options)
+      options[:locals].update formiename: formiename,
+                block: block, form: self, args: args
+      if defined?(controller) == 'method'
+        controller.render_to_body(options)
+      else
+        @template.render(options)
+      end
     })
-#p "** defined  #{where} #{formiename}"
+    # p "** defined  #{where} #{formiename}"
   end
 
-
- private
   def self.load_formies(where, dir)
- # avoid Dir.chdir (not thread safe)
+    # avoid Dir.chdir (not thread safe)
     dir = File.join Rails.root, dir
-    return  unless File.exist?(dir)
+    return unless File.exist?(dir)
+
     hsh = {}
-    Dir.glob(File.join(dir,'**','**')).sort.each { |path|
+    Dir.glob(File.join(dir, '**', '**')).sort.each { |path|
       base = File.basename(path).split('.').first
-      hsh[base] = path  unless hsh[base]
+      hsh[base] = path unless hsh[base]
     }
     hsh.each { |name, path|
-      next  if File.new(path).mtime < @last_update
+      next if File.new(path).mtime < @last_update
 
       x = File.expand_path(File.dirname(path))
       where.define_formie name, File.join(x, name)
     }
   end
-
 end
-
 
 module ActionView::Helpers::TextHelper
   def self.define_formie(name, txt)

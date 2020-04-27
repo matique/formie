@@ -1,0 +1,14 @@
+inherit_from:
+  - ~/configs/.rubocop.yml
+
+AllCops:
+  Include:
+    - 'lib/**/*.rb'
+  Exclude:
+    - 'test/**/*'
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
