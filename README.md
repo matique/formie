@@ -2,7 +2,7 @@ Formie
 ======
 
 [![Gem Version](https://badge.fury.io/rb/formie.svg)](https://badge.fury.io/rb/formie)
-[![Build Status](https://travis-ci.org/matique/formie.png?branch=master)](https://travis-ci.org/matique/formie)
+[![Build Status](https://travis-ci.org/matique/formie.svg?branch=master)](https://travis-ci.org/matique/formie)
 
 Tired of programming each HTML tag?
 Are you in search of DRYness for Rails views?
