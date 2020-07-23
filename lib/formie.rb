@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'formie/engine.rb'
+require 'formie/engine'
 
 module Formie
   Rails6 = Rails.version.to_f >= 6.0
@@ -35,7 +35,8 @@ module Formie
       options[:locals].update params
       options[:locals].update formiename: formiename,
                 block: block, form: self, args: args
-      if defined?(controller) == 'method'
+      if defined?(controller) == 'method' &&
+         controller.respond_to?(:render_to_body) # credits to MARS
         controller.render_to_body(options)
       else
         @template.render(options)
