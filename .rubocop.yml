@@ -3,7 +3,7 @@ inherit_from:
 
 AllCops:
   Include:
-    - 'lib/**/*.rb'
+    - 'lib/*/*.rb'
   Exclude:
     - 'test/**/*'
 
