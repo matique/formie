@@ -1,11 +1,15 @@
 inherit_from:
-  - ~/configs/.rubocop.yml
+  - '~/configs/.rubocop.yml'
 
 AllCops:
+  NewCops: enable
   Include:
-    - 'lib/*/*.rb'
+    - 'lib/**/*.rb'
   Exclude:
     - 'test/**/*'
+
+Layout/ArgumentAlignment:
+  Enabled: false
 
 Metrics/AbcSize:
   Enabled: false
