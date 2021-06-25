@@ -1,5 +1,5 @@
 inherit_from:
-  - '~/configs/.rubocop.yml'
+  - ~/configs/.rubocop.yml
 
 AllCops:
   NewCops: enable
