@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def index
     @orders = Order.all
   end
@@ -9,8 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    Order.create :name => 'hugo'
+    Order.create name: "hugo"
     @order = Order.find(params[:id])
   end
-
 end

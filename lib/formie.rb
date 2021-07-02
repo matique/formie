@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'formie/engine'
+require "formie/engine"
 
 module Formie
   Rails6 = Rails.version.to_f >= 6.0
-  PATH = Rails6 ? 'app/views/formies' : 'app/formies'
+  PATH = Rails6 ? "app/views/formies" : "app/formies"
 
   def self.reload
     if Rails6 && !File.directory?("#{Rails.root}/app/views/formies")
@@ -14,8 +14,8 @@ module Formie
     now = Time.now
     @last_update ||= Time.new(0)
     load_formies(::ActionView::Helpers::FormBuilder, "#{PATH}/forms")
-    load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/application")
-    load_formies(::ActionView::Helpers::TextHelper,  "#{PATH}/templates")
+    load_formies(::ActionView::Helpers::TextHelper, "#{PATH}/application")
+    load_formies(::ActionView::Helpers::TextHelper, "#{PATH}/templates")
     @last_update = now
   end
 
@@ -27,15 +27,15 @@ module Formie
       params = args.extract_options!
       options = {}
       if Rails6
-        options[:template] = path.sub("#{Rails.root}/app/views", '')
+        options[:template] = path.sub("#{Rails.root}/app/views", "")
       else
         options[:file] = path
       end
       options[:locals] = {}
       options[:locals].update params
       options[:locals].update formiename: formiename,
-                block: block, form: self, args: args
-      if defined?(controller) == 'method' &&
+        block: block, form: self, args: args
+      if defined?(controller) == "method" &&
          controller.respond_to?(:render_to_body) # credits to MARS
         controller.render_to_body(options)
       else
@@ -51,8 +51,8 @@ module Formie
     return unless File.exist?(dir)
 
     hsh = {}
-    Dir.glob(File.join(dir, '**', '**')).sort.each { |path|
-      base = File.basename(path).split('.').first
+    Dir.glob(File.join(dir, "**", "**")).sort.each { |path|
+      base = File.basename(path).split(".").first
       hsh[base] = path unless hsh[base]
     }
     hsh.each { |name, path|
