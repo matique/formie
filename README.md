@@ -1,6 +1,5 @@
 Formie
 ======
-
 [![Gem Version](https://badge.fury.io/rb/formie.svg)](https://badge.fury.io/rb/formie)
 
 Tired of programming each HTML tag?
