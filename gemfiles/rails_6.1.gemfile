@@ -6,11 +6,12 @@ gem "rails", "~> 6.1"
 gem "dryer-config", "~> 6.0"
 
 group :test do
+  gem "capybara"
   gem "observr"
   gem "rubocop", require: false
   gem "simplecov", require: false
-  gem "capybara"
   gem "slim"
+  gem "spring"
 end
 
 gemspec path: "../"

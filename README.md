@@ -100,4 +100,9 @@ In directory <formie_path> :
 
     span Hello Slim
 
-Copyright (c) 2009-2019 Dittmar Krall, released under the MIT license.
+## License MIT
+
+Copyright (c) 2009-2022 Dittmar Krall (www.matiq.com).
+Released under the MIT license:
+
+* https://opensource.org/licenses/MIT
