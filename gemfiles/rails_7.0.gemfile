@@ -8,6 +8,7 @@ gem "dryer-config", "~> 7.0"
 group :test do
   gem "capybara"
   gem "observr"
+  gem "ricecream"
   gem "rubocop", require: false
   gem "simplecov", require: false
   gem "slim"

@@ -19,7 +19,11 @@ describe "Formie" do
     order = Order.all.first
 
     visit "/orders/#{order.id}"
-    assert_equal order.name, page.find("form p input#order_name").value
+    # using form_with:
+    fnd = 'form p input[name="order[name]"]'
+    assert_equal order.name, page.find(fnd).value
+    # using form_for:
+    # assert_equal order.name, page.find("form p input#order_name").value
     assert_equal "Hello Slim", page.find("form span").text
   end
 

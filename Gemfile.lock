@@ -94,7 +94,7 @@ GEM
       thor (>= 0.14.6)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    date (3.3.1)
+    date (3.3.2)
     docile (1.4.0)
     erubi (1.11.0)
     globalid (1.0.0)
@@ -102,7 +102,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.0)
@@ -153,8 +153,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.3)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.4.4)
+      loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -166,6 +166,7 @@ GEM
     rake (13.0.6)
     regexp_parser (2.6.1)
     rexml (3.2.5)
+    ricecream (0.2.1)
     rubocop (1.40.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -217,6 +218,7 @@ DEPENDENCIES
   observr
   rails
   rake
+  ricecream
   rubocop
   simplecov
   slim

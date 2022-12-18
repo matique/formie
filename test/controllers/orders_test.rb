@@ -1,7 +1,7 @@
 require "test_helper"
 
 class OrdersControllerTest < ActionController::TestCase
-  test "checking formie copyright" do
+  test "formie copyright" do
     get :index
     assert_response :success
     #    assert_not_nil assigns(:orders)
