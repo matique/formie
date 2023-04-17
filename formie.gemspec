@@ -23,11 +23,8 @@ Gem::Specification.new do |s|
   s.files = `git ls-files -z`.split("\x0")
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "bundler"
-  s.add_development_dependency "rake"
   s.add_development_dependency "appraisal"
   s.add_development_dependency "combustion"
-
   s.add_development_dependency "minitest"
   s.add_development_dependency "sqlite3"
 end

@@ -62,7 +62,6 @@ before_filter do
 end
 ```
 
-
 ## Examples (see also tests)
 
 ```ruby
@@ -103,7 +102,7 @@ span Hello Slim
 
 ## Miscellaneous
 
-Copyright (c) 2009-2022 Dittmar Krall (www.matiq.com),
+Copyright (c) 2009-2023 Dittmar Krall (www.matiq.com),
 released under the MIT license:
 
 * https://opensource.org/licenses/MIT
