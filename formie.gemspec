@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name = "formie"
   s.version = Formie::VERSION
   s.summary = "Formie is like a Rails helper, but uses the notation of a partial."
-  s.description = <<-'END'
+  s.description = <<-END
     Formie implements low level template-based Rails helpers. It injects
     the formies into the ActionView module. The form-bounded as well as
     the unbounded templates are supported. Still, the ActionView
