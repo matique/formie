@@ -1,6 +1,8 @@
 # Formie
 
 [![Gem Version](https://badge.fury.io/rb/formie.svg)](https://badge.fury.io/rb/formie)
+[![GEM Downloads](https://img.shields.io/gem/dt/formie?color=168AFE&logo=ruby&logoColor=FE1616)](https://rubygems.org/gems/formie)
+
 
 Tired of programming each HTML tag?
 Are you in search of DRYness for Rails views?
@@ -103,6 +105,4 @@ span Hello Slim
 ## Miscellaneous
 
 Copyright (c) 2009-2023 Dittmar Krall (www.matiq.com),
-released under the MIT license:
-
-* https://opensource.org/licenses/MIT
+released under the [MIT license](https://opensource.org/licenses/MIT).

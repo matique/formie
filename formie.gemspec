@@ -14,11 +14,9 @@ Gem::Specification.new do |s|
   END
   s.authors = ["Dittmar Krall"]
   s.email = ["dittmar.krall@matiq.com"]
-  s.homepage = "http://matiq.com"
+  s.homepage = "https://github.com/matique/formie"
   s.license = "MIT"
   s.platform = Gem::Platform::RUBY
-
-  s.metadata["source_code_uri"] = "https://github.com/matique/formie"
 
   s.files = `git ls-files -z`.split("\x0")
   s.require_paths = ["lib"]

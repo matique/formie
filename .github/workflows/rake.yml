@@ -8,19 +8,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        ruby: ["2.7", "3.0", "3.2", head]
-        test_command: ["bundle exec rake test"]
-    runs-on: ${{ matrix.os }}
+        ruby_version: ["3.0", 3.2]
+        gemfile:
+          - Gemfile
+          - gemfiles/Gemfile.rails-7.1
+          - gemfiles/Gemfile.rails-7.0
+          - gemfiles/Gemfile.rails-6.1
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Bundle install
-      run: |
-        bundle config path /home/runner/bundle
-        bundle install
-        bundle update
-    - run: ${{ matrix.test_command }}
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Build and test with Rake
+        run: bundle exec rake
