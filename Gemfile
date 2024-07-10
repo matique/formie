@@ -5,9 +5,10 @@ gem "rails"
 
 group :test do
   gem "capybara"
-  gem "observr"
+  gem "cuco"
   gem "ricecream"
   gem "rubocop", require: false
+  gem "sqlite3", "~> 1.0"
   gem "simplecov", require: false
   gem "slim"
   gem "spring"

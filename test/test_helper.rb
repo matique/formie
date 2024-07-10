@@ -9,7 +9,7 @@ require "combustion"
 Combustion.path = "test/internal"
 Combustion.initialize! :active_record
 
-require "rails/test_help"
+require "capybara/rails"
 require "minitest/autorun"
 require "minitest/benchmark"
-require "capybara/rails"
+require "rails/test_help"
