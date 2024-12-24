@@ -12,6 +12,9 @@ describe "Formie" do
 
   it "should display copyright" do
     visit "/orders"
+
+    assert_selector("html", count: 1)
+    assert_selector("body", count: 1)
     assert page.has_content?("Copyright")
   end
 

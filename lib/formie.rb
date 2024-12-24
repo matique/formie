@@ -35,6 +35,7 @@ module Formie
       options[:locals].update params
       options[:locals].update formiename: formiename,
         block: block, form: self, args: args
+      options[:layout] = false # starting at Rails 8
       if defined?(controller) == "method" &&
          controller.respond_to?(:render_to_body) # credits to MARS
         controller.render_to_body(options)

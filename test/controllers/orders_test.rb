@@ -2,13 +2,18 @@ require "test_helper"
 
 class OrdersControllerTest < ActionController::TestCase
   test "formie copyright" do
-    get :index
+    expected = <<-EOS
+      <div class="copyright"> Copyright (c) 2000 </div>
+      <p>
+        <label> def </label>
+        <input type="text" name="def" id="def" />
+      </p>
+    EOS
+    expected.gsub!(/^ */, "").delete!("\n")
+
+    get :index # faked index
     assert_response :success
-    #    assert_not_nil assigns(:orders)
-    assert_match(/copyright/, response.body)
-    assert_match(/Copyright/, response.body)
-    assert_match(/label/, response.body)
-    assert_match(/input/, response.body)
-    assert_match(/def/, response.body)
+    res = response.body.gsub(/^ */, "").delete("\n")
+    assert_match(expected, res)
   end
 end
