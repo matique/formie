@@ -9,6 +9,7 @@ class OrdersControllerTest < ActionController::TestCase
         <input type="text" name="def" id="def" />
       </p>
     EOS
+    expected = expected.dup
     expected.gsub!(/^ */, "").delete!("\n")
 
     get :index # faked index
