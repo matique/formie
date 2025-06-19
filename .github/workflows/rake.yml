@@ -8,11 +8,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby_version: ["3.2", "3.3"]
+        ruby_version: [head, "3.4", "3.2"]
         gemfile:
           - Gemfile
+          - gemfiles/Gemfile.rails-8.0
           - gemfiles/Gemfile.rails-7.2
-          - gemfiles/Gemfile.rails-7.1
     runs-on: ubuntu-latest
 
     steps:
@@ -21,12 +21,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby_version }}
-          bundler-cache: true
       - name: Bundle install
         run: |
           bundle config set frozen false
           bundle config path /home/runner/bundle
           bundle install
           bundle update
-      - name: Build and test with Rake
+      - name: Run the default task
         run: bundle exec rake

@@ -2,9 +2,9 @@
 /coverage/
 .watchr
 
-*.gem
-*.log
-*.lock
+**/*.gem
+**/*.log
+**/*.lock
 
 **/db/test.sqlite*
 /test/internal/storage/

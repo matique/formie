@@ -6,7 +6,7 @@ gem "rails"
 group :test do
   gem "capybara"
   gem "cuco"
-  gem "ricecream"
+  gem "ricecream", require: false
   gem "rubocop", require: false
   gem "sqlite3"
   gem "simplecov", require: false
