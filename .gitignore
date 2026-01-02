@@ -1,4 +1,5 @@
-.bundle/
+# ~/.gitignore included
+
 /coverage/
 .watchr
 
