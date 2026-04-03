@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.required_ruby_version = ">= 3"
 
-  s.add_development_dependency "appraisal"
   s.add_development_dependency "combustion"
   s.add_development_dependency "minitest"
 end
