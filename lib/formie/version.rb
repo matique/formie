@@ -1,7 +1,8 @@
 # rubocop: disable all
 
 module Formie
-  VERSION = "1.1.6"     # 2026-01-02
+  VERSION = "1.1.7"     # 2026-04-03
+  # VERSION = "1.1.6"     # 2026-01-02
   # VERSION = "1.1.5"     # 2025-06-19
   # VERSION = "1.1.4"     # 2024-12-24
   # VERSION = "1.1.3"     # 2024-10-20
